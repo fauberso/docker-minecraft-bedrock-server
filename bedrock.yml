@@ -44,13 +44,17 @@ spec:
         - name: bds
           image: itzg/minecraft-bedrock-server
           imagePullPolicy: Always
+          tty: true
+          stdin: true
           env:
             - name: EULA
               value: "TRUE"
             - name: GAMEMODE
-              value: survival
+              value: "survival"
             - name: DIFFICULTY
-              value: normal
+              value: "normal"
+            - name: ALLOW_CHEATS
+              value: "true"
           volumeMounts:
             - mountPath: /data
               name: data
@@ -97,4 +101,5 @@ spec:
     - port: 19132
       nodePort: 19132
       protocol: UDP
+      name: minecraft
   type: NodePort 
